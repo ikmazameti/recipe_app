@@ -2,6 +2,12 @@
 
 A recipe book app for all local tribal traditional Ghanaian meals.
 
+
+Resources
+-- [Free Api](https://dummyjson.com/docs/auth)
+-- [Inspiration](https://www.youtube.com/watch?v=5lDJNFSWUD8)
+
+
 [Play Store](buymeacoffee.com/mawuliazameti) coming soon!
 
 
