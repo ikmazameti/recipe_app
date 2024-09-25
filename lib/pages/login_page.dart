@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:status_alert/status_alert.dart';
+
+import '../services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -96,10 +99,22 @@ class _LoginPageState extends State<LoginPage> {
   Widget _loginButton() => SizedBox(
         width: MediaQuery.sizeOf(context).width * 0.6,
         child: ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             if (_loginFormKey.currentState?.validate() ?? false) {
               _loginFormKey.currentState?.save();
-            }  
+              bool result = await AuthService().login(username!, password!);
+
+              if (result) {
+                Navigator.pushReplacementNamed(context, '/home');
+              } else {
+                StatusAlert.show(context,
+                    duration: const Duration(seconds: 2),
+                    title: "Login failed",
+                    subtitle: 'Please try again!',
+                    configuration: const IconConfiguration(icon: Icons.error),
+                    maxWidth: 260);
+              }
+            }
           },
           child: const Text("Login"),
         ),
